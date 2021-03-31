@@ -19,8 +19,8 @@ function fish_prompt
             set git_meta "$git_meta!"
         end
         if git_is_touched
-            git_is_dirty && set git_meta "$git_metaD"
-            git_is_staged && set git_meta "$git_metaS"
+            git_is_dirty && set git_meta "$git_meta\D"
+            git_is_staged && set git_meta "$git_meta\S"
         end
         set -l commit_count (command git rev-list --count --left-right (git remote)/(git_branch_name)"...HEAD" 2> /dev/null)
         if test $commit_count
