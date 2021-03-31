@@ -13,7 +13,7 @@ function fish_prompt
         echo -n -s $branch_color (git_branch_name) $normal_color
         set -l git_meta ""
         if test (command git ls-files --others --exclude-standard | wc -w 2> /dev/null) -gt 0
-            set git_meta "$git_meta"
+            set git_meta "$git_meta"
         end
         if test (command git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
             set git_meta "$git_meta"
