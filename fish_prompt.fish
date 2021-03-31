@@ -13,24 +13,24 @@ function fish_prompt
         echo -n -s $branch_color (git_branch_name) $normal_color
         set -l git_meta ""
         if test (command git ls-files --others --exclude-standard | wc -w 2> /dev/null) -gt 0
-            set git_meta "$git_meta?"
+            set git_meta "$git_meta"
         end
         if test (command git rev-list --walk-reflogs --count refs/stash 2> /dev/null)
             set git_meta "$git_meta\$"
         end
         if git_is_touched
-            git_is_dirty && set git_meta "$git_meta⨯"
-            git_is_staged && set git_meta "$git_meta●"
+            git_is_dirty && set git_meta "$git_meta"
+            git_is_staged && set git_meta "$git_meta陼"
         end
         set -l commit_count (command git rev-list --count --left-right (git remote)/(git_branch_name)"...HEAD" 2> /dev/null)
         if test $commit_count
             set -l behind (echo $commit_count | cut -f 1)
             set -l ahead (echo $commit_count | cut -f 2)
             if test $behind -gt 0
-                set git_meta "$git_meta🠋"
+                set git_meta "$git_meta"
             end
             if test $ahead -gt 0
-                set git_meta "$git_meta🠉"
+                set git_meta "$git_meta"
             end
         end
         if test $git_meta
